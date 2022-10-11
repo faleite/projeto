@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "projeto"
+version = "0.1.0"
+description = "Implementação da cifra de cesar - by Eduado Mendes 'Live de Python'"
+authors = ["Fabricio Araujo <fabricio_2310@hotmail.com>", "dunossauro"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10" # ^ Qualquer versão do python que seja maior que 3.10
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
