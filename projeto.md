@@ -100,6 +100,9 @@ build-backend = "poetry.core.masonry.api"
 ---
 
 - **Versionameto de código com o git**
-    - Aqui tem um tutorial prático de [**git**](https://github.com/faleite/tutors/blob/1b9c0561053c593961ced11d22fd16ad617c6591/git.md)
-
-
+    - Adicionar projeto ao **git**
+        - *Tutorial prático de git [aqui](https://github.com/faleite/tutors/blob/1b9c0561053c593961ced11d22fd16ad617c6591/git.md)*
+        - Outro excelente tutorial de [git](https://gitfichas.com)
+    - Criar arquivo **.gitignore** na raiz do projeto
+        - Para gerar arquivos a serem ignorados pode usar o [gitignore.io](https://www.toptal.com/developers/gitignore)
+        - Lembre de enviar o .gitignore para o git
