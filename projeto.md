@@ -1,6 +1,6 @@
 # Como organizar um projeto Python
 
-#### 1. Estrutura de diretórios
+### 1. Estrutura de diretórios
 
 Pastas|Função
 ------|------
@@ -13,12 +13,12 @@ Pastas|Função
 
 ---
 
-#### 2. Ferramentas de desenvolvimento
+### 2. Ferramentas de desenvolvimento
 
-- **Escolher a versão do Python**
-    - Preferêncialmente usar a ultima versão possivel
-    - Depende de ferramentas como ex.: fremeworks que suporte tais versões
-    - Para setar a versão de python podemos usar a ferramenta **pyenv**
+#### 1. Escolher a versão do Python
+- Preferêncialmente usar a ultima versão possivel
+- Depende de ferramentas como ex.: fremeworks que suporte tais versões
+- Para setar a versão de python podemos usar a ferramenta **pyenv**
 
 **pyenv:** Cria um ambiente python isolado do OS, ou isola um projeto/diretório específico.
 
@@ -33,13 +33,13 @@ Comandos|Função
 
 ---
 
-- **Criar o ambiente virtual**
-    - Escolha da ferramenta para criação do ambiente virtual
-        - virtualenv, **venv**, **poetry**, pipenv e etc...
-    - Neste projeto utilizaremos a ferramenta **poetry**
-        - Para instalar o **poetry** utilize o **pipx**
-            - **pipx** instala ferramentas de linha de comando em um ambiente virtual isolado
-            - **pipx** é bom para instalações de ferramentas de uso globais
+#### 2 . Criar o ambiente virtual
+- Escolha da ferramenta para criação do ambiente virtual
+    - virtualenv, **venv**, **poetry**, pipenv e etc...
+- Neste projeto utilizaremos a ferramenta **poetry**
+    - Para instalar o **poetry** utilize o **pipx**
+        - **pipx** instala ferramentas de linha de comando em um ambiente virtual isolado
+        - **pipx** é bom para instalações de ferramentas de uso globais
 
 *Instalação do pipx e poetry:*
 
@@ -99,10 +99,58 @@ build-backend = "poetry.core.masonry.api"
 ```
 ---
 
-- **Versionameto de código com o git**
-    - Adicionar projeto ao **git**
-        - *Tutorial prático de git [aqui](https://github.com/faleite/tutors/blob/1b9c0561053c593961ced11d22fd16ad617c6591/git.md)*
-        - Outro excelente tutorial de [git](https://gitfichas.com)
-    - Criar arquivo **.gitignore** na raiz do projeto
-        - Para gerar arquivos a serem ignorados pode usar o [gitignore.io](https://www.toptal.com/developers/gitignore)
-        - Lembre de enviar o .gitignore para o git
+#### 3. Versionameto de código com o git
+- Adicionar projeto ao **git**
+    - *Tutorial prático de git [aqui](https://github.com/faleite/tutors/blob/1b9c0561053c593961ced11d22fd16ad617c6591/git.md)*
+    - Outro excelente tutorial de [git](https://gitfichas.com)
+- Criar arquivo **.gitignore** na raiz do projeto
+    - Para gerar arquivos a serem ignorados pode usar o [gitignore.io](https://www.toptal.com/developers/gitignore)
+    - Lembre de enviar o .gitignore para o git
+---
+
+#### 4. Testes
+- Temos diversas ferramentas para testes
+    - [pytest](https://www.youtube.com/watch?v=MjQCvJmc31A), [unittest](https://www.youtube.com/watch?v=Sr9lUR1COpU), [behave](https://youtu.be/ReELqf9B86g), ward, e etc...
+    - Neste projeto utilizaremos o **pytest**
+
+*Usando o pytest:*
+
+Comando|Função
+-------|------
+**poetry add --dev pytest**| *Instala o pytest nas dependências dev*
+**mkfir tests**| *Criar diretório de testes na raiz do projeto*
+**touch tests/__init\__.py**| *Criar arquivo init na pasta tests*
+**pytest**| *Roda os testes*
+**pytest -v**| *Roda os testes com detalhes*
+
+*Para criar um teste, crie um arquivo com o nome:\
+**test**_nome_arquivo.py, na pasta tests/*
+
+*Exemplo de testes com o arquivo test_encripta.py*:
+
+```py
+# test_encripta.py
+
+# Na pasta cesar no arquivo cesar import a funçao encripta
+from cesar.cesar import encripta
+
+
+def test_encripta_fabricio_retorna_snoevpvb():
+    assert encripta('Fabricio') == 'snoevpvb'
+
+
+def test_encripta_snoevpvb_retorna_fabricio():
+    assert encripta('snoevpvb') == 'fabricio'
+
+
+def test_encripta_deve_retornar_minusculas():
+    assert encripta('A').islower()
+
+
+def test_encripta_deve_preservar_os_espaços():
+    resultado = encripta('e a')
+    assert resultado[1] == ' '
+```
+---
+
+
