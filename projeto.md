@@ -1,6 +1,6 @@
 # Como organizar um projeto Python
 
-### 1. Estrutura de diretórios
+## 1. Estrutura de diretórios
 
 Pastas|Função
 ------|------
@@ -13,7 +13,7 @@ Pastas|Função
 
 ---
 
-### 2. Ferramentas de desenvolvimento
+## 2. Ferramentas de desenvolvimento
 
 #### 1. Escolher a versão do Python
 - Preferêncialmente usar a ultima versão possivel
@@ -153,4 +153,38 @@ def test_encripta_deve_preservar_os_espaços():
 ```
 ---
 
+## 3. Ferramentas de checagem
 
+#### 1. Formatadores de código
+
+- Ferramentas de formatação, padronizam a maneira de escrever código
+- Algumas das ferramentas utilizadas:
+    - blue, black, isort, autopep8, YAPF, **darker**, Flake8 e etc...
+- Neste projeto utilizaremos o **blue** e **isort**
+    - **blue** é um fork do black, utiliza o black e o Flake8
+        - Padornizações como: linha com 79 caracteres, troca aspas " " por ' '\
+coloca espaçamentos corretos, e etc...
+    - **isort** faz a ordenação dos imports
+
+*Usando o blue:*
+
+Comando|Função
+-------|------
+**poetry add --dev blue**| *Instalação do blue com o poetry*
+**blue .**| *Formata todos os códigos do projeto, para o padrão PEP8*
+**blue cesar/cesar.py**| *Formata o código dentro do padrão PEP8*
+**git diff cesar/cesar.py**| *Mostra a diferença do código formatado*
+
+*Usando o isort:*
+
+Comando|Função
+-------|------
+**poetry add --dev isort**| *Instalação do isort com o poetry*
+**isort .**| *Formata todos os arquivos do projeto para ordenação dos imports*
+**isort . --check**| *Olha todos os arquivos do projeto e mostra se tem algo errado*
+
+- **Mais sobre padronização de código**
+    - [Live de padronização de código](https://youtu.be/bqxXWfCrUXs)
+    - [Live complexidade de código](https://youtu.be/qG-F5tordqc)
+
+---

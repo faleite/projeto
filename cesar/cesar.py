@@ -1,21 +1,25 @@
 from string import ascii_lowercase
-def encripta(frase,n=13):
+
+
+def encripta(frase, n=13):
     """Encripta o texto."""
-    encriptado = ""
+    encriptado = ''
     for l in frase:
         l = l.lower()
         if l == ' ':
             encriptado += l
-        elif l not in ascii_lowercase: ...
+        elif l not in ascii_lowercase:
+            ...
         else:
             pos = ascii_lowercase.find(l) + n
             l = ascii_lowercase[pos % 26]
             encriptado += l
     return encriptado
 
-def decripta(frase,n=13):
+
+def decripta(frase, n=13):
     """Decripta o texto."""
-    decriptado = ""
+    decriptado = ''
     for l in frase:
         l = l.lower()
         if l == ' ':

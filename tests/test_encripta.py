@@ -16,4 +16,3 @@ def test_encripta_deve_retornar_minusculas():
 def test_encripta_deve_preservar_os_espaços():
     resultado = encripta('e a')
     assert resultado[1] == ' '
-
