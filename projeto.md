@@ -186,5 +186,62 @@ Comando|Função
 - **Mais sobre padronização de código**
     - [Live de padronização de código](https://youtu.be/bqxXWfCrUXs)
     - [Live complexidade de código](https://youtu.be/qG-F5tordqc)
+---
+
+#### 2. Análise estática (Checagens - Linters)
+
+- As ferramentas de Análise estática procuram:
+    - Erros de sintaxe
+    - Potenciais problemas
+        - Nomes duplicados
+        - Nomes ruins
+        - Códigos inseguros
+    - Análise de complexidade de código
+    - Violações de convenções
+        - PEP-8 (Conveção sobre linhas, espaços e imports ...)
+        - PEP-257 (Conveção de Docstrings)
+-  Existem diversas ferramentas nessa linha, algumas recomendações:
+    - **flake8:** Checador da pep-8
+    - **pylint:** Padronização, convensões e erros
+    - **pydocstyle:** Checador da PEP-257
+    - **bandit:** Problemas de segurança
+    - **Radon:** Busca de complexidade de código
+    - **Prospector:** Agregador de ferramentas
+        - Flake8, Mccabe, pylint, pep8, pep257, ...
+    - **mypy:** Checador de sugestões de tipo
+    - ...
+
+*Neste projeto utilizaremos o **Prospector**:*
+
+Comando|Função
+-------|------
+**poetry add --dev prospector**| *Instala o prospector*
+**prospector**| *Roda as análises*
+**prospector --with-toll pydocstyle**| *Executa também a checagem de docstrings*
 
 ---
+
+## 4. Documentação
+
+#### 1. README
+- README.md
+
+#### 2. Criadores de documentação
+
+- Existem ferramentas para formatar documentação
+    - **mkdocs**, sphinx e etc ...
+    - Neste projeto utilizaremos o **mkdocs**
+
+*Usando o mkdocs, comandos básicos:*
+
+Comando|Função
+-------|------
+**poetry add --dev mkdocs**| *Instala o mkdocs*
+**mkdocs new .**| *Cria a pasta /docs e o arquivo mkdocs.yml no projeto*
+**mkdocs serve**| *Cria um site com a dumentação implementada*
+
+*No arquivo mkdocs.yml seta configurações, inicialmente colocamos o nome do site*\
+*No arquivo index.md em /docs/index.md, escrevemos a documentação em markdown*
+
+- **Saiba mais sobre mkdocs**
+    - [Live de MkDocs](https://youtu.be/GW6nAJ1NHUQ)
