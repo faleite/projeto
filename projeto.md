@@ -364,7 +364,7 @@ jobs:
         - name: Set up python
           uses: actions/setup-python@v2
           with:
-              python-version: 3.10.5
+              python-version: 3.10.2
 
         - name: Check out repository
           uses: actions/checkout@v2
