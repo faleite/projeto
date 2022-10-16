@@ -4,6 +4,8 @@
 
 ## Projeto de estudo sobre organização de projetos
 
+### [Meu tutor](https://github.com/faleite/projeto/blob/b59d3b07d598688ffebe1b32d760ac50379e7960/projeto.md)
+
 ### Referencias:
 
 - [Como organizar um projeto em python](https://www.youtube.com/watch?v=O3bs4JtHrow) - Live de Python #192 by Eduardo Mendes
