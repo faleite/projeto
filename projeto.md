@@ -338,6 +338,23 @@ Comando|Função
 make lint # roda os linters antes do commit, só faz o commit se passar nos testes
 make test # roda os testes antes do commit, só faz o commit se passar nos testes
 ```
+
+#### 3. Usando o Actions
+- Faz checagens no repositório
+    - Github Actions, Gitlab ...
+    - Neste projeto utilizaremos o **github actions**
+
+*Uso do **Github Actions**:*
+
+Comando|Função
+-------|------
+**mkdir .github/**| *Cria diretório .github no projeto*
+**mkdir .github/workflows**| *Cria diretório workflows no .github do projeto*
+**touch .github/workflows/continous_integration.yml**| *Cria aquivo de configuração do actions*
+
+- **Saiba mais sobre Actions**
+    - [Live sobre Github Actions](https://youtu.be/L1f6N6NcgPw)
+
 ---
 
 
