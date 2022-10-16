@@ -14,7 +14,7 @@ format: # Formatação do código
 lint: # Checagem do código
 		@blue . --check
 		@isort . --check
-		@prospector --with-tool pydocstyle --doc-warning
+		@prospector --with-tool pydocstyle --doc-warning --no-autodetect
 
 test: # Roda os testes
 		@pytest -v

@@ -1,7 +1,6 @@
 # Como organizar um projeto Python
 
 ## 1. Estrutura de diretórios
-
 Pastas|Função
 ------|------
 **projeto**| *diretório principal - raiz - incial - projeto*
@@ -156,7 +155,6 @@ def test_encripta_deve_preservar_os_espaços():
 ## 3. Ferramentas de checagem
 
 #### 1. Formatadores de código
-
 - Ferramentas de formatação, padronizam a maneira de escrever código
 - Algumas das ferramentas utilizadas:
     - blue, black, isort, autopep8, YAPF, **darker**, Flake8 e etc...
@@ -189,7 +187,6 @@ Comando|Função
 ---
 
 #### 2. Análise estática (Checagens - Linters)
-
 - As ferramentas de Análise estática procuram:
     - Erros de sintaxe
     - Potenciais problemas
@@ -219,6 +216,23 @@ Comando|Função
 **prospector**| *Roda as análises*
 **prospector --with-toll pydocstyle**| *Executa também a checagem de docstrings*
 
+#### 3. Segurança de Bibliotecas
+- A falta de atualizações das Bibliotecas de um projeto, pode trazer\
+vulnerabilidade de segurança.
+- Algumas ferramentas que podem ajudar
+    - **pip-audit**
+    - **safety**
+    - **pyup**
+
+*Neste projeto utilizaremos o **pip-audit**:*
+>*Esta ferramenta olha todas as bibliotecas baixadas do projeto\
+>e mostra se há alguma vulnerabilidade de segurança*
+
+Comando|Função
+-------|------
+**poetry add --dev pip-audit**| *Instala o pip-audit*
+**pip-audit**| *Roda as análises*
+
 ---
 
 ## 4. Documentação
@@ -227,7 +241,6 @@ Comando|Função
 - README.md
 
 #### 2. Criadores de documentação
-
 - Existem ferramentas para formatar documentação
     - **mkdocs**, sphinx e etc ...
     - Neste projeto utilizaremos o **mkdocs**
@@ -245,3 +258,46 @@ Comando|Função
 
 - **Saiba mais sobre mkdocs**
     - [Live de MkDocs](https://youtu.be/GW6nAJ1NHUQ)
+
+---
+
+## 5. Automações
+
+#### 1. Facilitando a vida e os comandos
+- Comandos usados no projeto
+    - pyenv, poetry, blue, isort, prospector, pip-audit, pytest,\
+mkdocs, pydocstyle ...
+- Existe a ferramenta **GNU Make** para auxiliar neste processo
+
+```Makefile
+.PHONY: install format lint test sec # Basicamente torna o Makefile mais rápido
+
+install: # Cria ambiente virtual
+		@poetry install # '@' -> faz com que não mostre o comando que esta executando
+
+# Ex. uso com o pip:
+# python -m ven venv
+# pip install -r requirementes.txt
+
+format: # Formatação do código
+		@isort .
+		@blue .
+
+lint: # Checagem do código
+		@blue . --check
+		@isort . --check
+		@prospector --with-tool pydocstyle --doc-warning
+
+test: # Roda os testes
+		@pytest -v
+
+sec: # Verifica segurança das bibliotecas
+		@pip-audit
+
+env: # Monta o ambiente virtual
+		@poetry shell
+```
+
+- **Saiba mais sobre GNU Make**
+    - [Live sobre GNU Make](https://youtu.be/Bb_TvqoUxX4)
+
