@@ -1,5 +1,7 @@
 # Como organizar um projeto em python
 
+[![Continuous Integration](https://github.com/faleite/projeto/actions/workflows/continuous_integration.yml/badge.svg)](https://github.com/faleite/projeto/actions/workflows/continuous_integration.yml)
+
 ## Projeto de estudo sobre organização de projetos
 
 ### Referencias:

@@ -350,7 +350,47 @@ Comando|Função
 -------|------
 **mkdir .github/**| *Cria diretório .github no projeto*
 **mkdir .github/workflows**| *Cria diretório workflows no .github do projeto*
-**touch .github/workflows/continous_integration.yml**| *Cria aquivo de configuração do actions*
+**touch .github/workflows/continuous_integration.yml**| *Cria aquivo de configuração do actions*
+
+*Exemplo de **CI** deste projeto:*
+```yml
+name: Continuous Integration
+on: [push] # Aplica sempre que faz o 'git push' (pode colocar: merge, pull...)
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+
+        - name: Set up python
+          uses: actions/setup-python@v2
+          with:
+              python-version: 3.10.5
+
+        - name: Check out repository
+          uses: actions/checkout@v2
+
+        - name: Install Poetry
+          uses: snok/install-poetry@v1
+          with:
+              virtualenvs-in-project: true
+
+        - name: Load cached venv
+          id: cached-poetry-dependencies
+          uses: actions/cache@v2
+          with:
+              path: .venv
+              key: venv-${{ hashFiles('**/poetry.lock') }}
+
+        - name: Install dependencies
+          if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+          run: poetry install --no-interaction
+
+        - name: Lint
+          run: poetry run make lint
+
+        - name: Run tests
+          run: poetry run make test
+```
 
 - **Saiba mais sobre Actions**
     - [Live sobre Github Actions](https://youtu.be/L1f6N6NcgPw)
