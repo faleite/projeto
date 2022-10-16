@@ -269,6 +269,11 @@ Comando|Função
 mkdocs, pydocstyle ...
 - Existe a ferramenta **GNU Make** para auxiliar neste processo
 
+*Uso da ferramenta:*
+1. *Crie um arquivo na raiz do projeto com o nome **Makefile***
+2. *Edite o arquivo, com os parâmetros com forme exemplo abaixo:*
+
+*Exemplo de **Makefile**:*
 ```Makefile
 .PHONY: install format lint test sec # Basicamente torna o Makefile mais rápido
 
@@ -286,7 +291,8 @@ format: # Formatação do código
 lint: # Checagem do código
 		@blue . --check
 		@isort . --check
-		@prospector --with-tool pydocstyle --doc-warning
+		@prospector --with-tool pydocstyle --doc-warning --no-autodetect
+# --no-autodetect -> resolve bug do prospector sobre pylint-django
 
 test: # Roda os testes
 		@pytest -v
@@ -298,6 +304,40 @@ env: # Monta o ambiente virtual
 		@poetry shell
 ```
 
+Comando|Função
+-------|------
+**make install**|*Cria o ambiente virtual*
+**make format**| *Formata o código*
+**make lint**| *Checa do código*
+**make test**| *Roda os testes*
+**make sec**| *Verifica a segurança das bibliotecas*
+**make env**| *Monta o ambiente virtual*
+
 - **Saiba mais sobre GNU Make**
     - [Live sobre GNU Make](https://youtu.be/Bb_TvqoUxX4)
+
+#### 2. Usando o **hooks** do **git**
+- Usamos o **hooks** para rodar checagens e testes...
+    - Antes do commit
+    - Antes do rebase
+    - Antes do push
+    - Antes do merge
+    - ...
+
+*Uso básico do **hooks**:*
+
+Comando|Função
+-------|------
+**touch git/hooks/pre-commit**| *Criar o arquivo pre-commit no diretório **hooks***
+**chmod +x pre-commit**| *Tornar o arquivo **pre-commit** executável*
+
+*Exemplo de uso do arquivo **pre-commit**:*
+
+```sh
+# pre-commit
+make lint # roda os linters antes do commit, só faz o commit se passar nos testes
+make test # roda os testes antes do commit, só faz o commit se passar nos testes
+```
+---
+
 

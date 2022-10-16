@@ -15,6 +15,7 @@ lint: # Checagem do código
 		@blue . --check
 		@isort . --check
 		@prospector --with-tool pydocstyle --doc-warning --no-autodetect
+# --no-autodetect -> resolve bug do prospector sobre pylint-django
 
 test: # Roda os testes
 		@pytest -v
